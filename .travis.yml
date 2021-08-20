@@ -1,0 +1,11 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - docker build -t benardi/docker-react -f dev.Dockerfile .
+
+script:
+  - docker run -e CI=true benardi/docker-react npm run test 
